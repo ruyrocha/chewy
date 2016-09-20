@@ -37,6 +37,8 @@ module Chewy
 
               indexed_objects = build_root.parent_id && fetch_indexed_objects(action_objects.values.flatten)
               body = bulk_body(action_objects, indexed_objects)
+              puts "MS debug body"
+              puts body
 
               errors = bulk(bulk_options.merge(body: body, journal: journal)) if body.present?
 
