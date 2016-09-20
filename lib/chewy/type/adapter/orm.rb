@@ -115,10 +115,7 @@ module Chewy
               true
             else
               identify(batch).each { |id| hash.delete(id) }
-              test = grouped_objects(batch)
-              puts "MS Debug"
-              puts test
-              yield test
+              yield grouped_objects(batch)
             end
           end.all?
 

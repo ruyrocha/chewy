@@ -37,13 +37,14 @@ module Chewy
 
               indexed_objects = build_root.parent_id && fetch_indexed_objects(action_objects.values.flatten)
               body = bulk_body(action_objects, indexed_objects)
-              puts "MS debug body"
+              puts "Finished generating body will import #{args}" 
               puts body
 
               errors = bulk(bulk_options.merge(body: body, journal: journal)) if body.present?
 
               fill_payload_import payload, action_objects
               fill_payload_errors payload, errors if errors.present?
+              puts "Finished importing #{args}" 
               !errors.present?
             end
           end
